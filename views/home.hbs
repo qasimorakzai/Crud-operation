@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Home</title>
+</head>
+<body>
+    {{> navbar }}
+    <div class="container">
+        <h1>Home</h1>
+        <a href="/add" class="btn btn-primary mb-3">Add New Contact</a>
+        <ul class="list-group">
+            {{#each contacts}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{this.name}}</strong><br>
+                        {{this.email}}<br>
+                        {{this.phone}}<br>
+                        {{this.address}}
+                    </div>
+                    <div>
+                        <a href="/edit/{{this._id}}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="/delete/{{this._id}}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
